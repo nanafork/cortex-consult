@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex Consult | Flyer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --bg-color: #050505;
+            --grid-color: rgba(255, 255, 255, 0.05);
+            --accent-orange: #f5a623;
+            --text-light: #ffffff;
+            --text-dim: #a0a0a0;
+            --box-bg: rgba(20, 20, 20, 0.8);
+            --box-border: rgba(255, 255, 255, 0.2);
+        }
+        
+        body {
+            margin: 0;
+            padding: 40px 0;
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-position: center center;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .flyer-canvas {
+            width: 800px;
+            min-height: 1000px; /* Changed to min-height to prevent clipping */
+            background: linear-gradient(180deg, rgba(8,8,8,0.9) 0%, rgba(0,0,0,1) 100%);
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,1);
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Top Header */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        .series-title {
+            color: var(--accent-orange);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding-left: 60px;
+            margin-top: 10px;
+        }
+        .series-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-orange);
+        }
+        .logo-area {
+            text-align: right;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-area img {
+            width: 90px;
+            border-radius: 8px;
+        }
+
+        .main-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 65px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 40px 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        .main-heading span {
+            color: var(--text-light); /* Kept white instead of orange to mirror 'COOK'D SERIES' */
+            display: block;
+        }
+        .main-heading span:first-child {
+            color: var(--accent-orange);
+        }
+
+        /* Main Intro Box */
+        .intro-box {
+            background: var(--box-bg);
+            border: 1px solid var(--box-border);
+            border-radius: 12px;
+            padding: 35px 50px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .intro-box p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 400;
+        }
+        .intro-box p strong {
+            color: var(--accent-orange);
+            font-weight: 600;
+        }
+
+        /* Background Nodes & Trust Badge */
+        .bg-node-1 {
+            position: absolute;
+            top: 5%; right: -5%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .bg-node-2 {
+            position: absolute;
+            bottom: 15%; left: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .trust-badge {
+            background: rgba(140, 198, 63, 0.1);
+            border: 1px solid rgba(140, 198, 63, 0.4);
+            color: #8cc63f;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin: -20px auto 40px auto;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(140, 198, 63, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Middle Section */
+        .middle-section {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px; /* Added spacing from above elements */
+            margin-bottom: 50px;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .image-container {
+            width: 240px;
+            height: 240px;
+            border: 2px solid var(--accent-orange);
+            border-radius: 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+        .image-container img {
+            width: 80%;
+            height: 80%;
+        }
+        
+        .name-badge {
+            background: var(--accent-orange);
+            color: black;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255,255,255,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            color: var(--text-light);
+        }
+        .info-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .info-text .label {
+            color: #8cc63f; /* Green color from the inspiration image */
+            font-weight: 500;
+            font-size: 18px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .info-text .value {
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            display: flex;
+            gap: 40px;
+            align-items: stretch;
+            margin-top: 0; /* Removed margin-top auto */
+        }
+        .menu-box {
+            background: var(--box-bg);
+            border: 1px solid var(--box-border);
+            border-radius: 12px;
+            padding: 30px 40px;
+            flex: 1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .menu-title {
+            color: #8cc63f; /* Green 'WHAT'S ON THE MENU' */
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 16px;
+            font-size: 17px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85); /* Much brighter text */
+        }
+        .menu-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-size: 20px;
+            top: -3px;
+        }
+        .menu-list li strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .bottom-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            width: 150px;
+            padding-bottom: 15px;
+        }
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #10b981, #3b82f6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .bottom-right p {
+            margin: 0;
+            font-size: 16px;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+        .bottom-right span {
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flyer-canvas" id="flyer">
+        <div class="bg-node-1"></div>
+        <div class="bg-node-2"></div>
+        
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="series-title">ML Support Services</div>
+            <div class="logo-area">
+                <img src="Cortex Consult.png" alt="Cortex Consult Logo">
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="main-heading"><span>CORTEX</span><span>CONSULT</span></h1>
+
+        <!-- Intro Box -->
+        <div class="intro-box">
+            <p><strong>Struggling with your ML Project?</strong> Support and guidance tailored for you. Transform your ideas into professional, high-performing implementations and A+ thesis write-ups.</p>
+        </div>
+        <div style="text-align: center;">
+            <div class="trust-badge">🔒 100% Confidential  •  Proven Results</div>
+        </div>
+
+        <!-- Middle Section (Now Packages) -->
+        <div class="bottom-section">
+            <div class="menu-box">
+                <h3 class="menu-title"><span style="font-size: 28px; margin-right: 10px;">👨‍🏫👇</span>OUR PACKAGES</h3>
+                <ul class="menu-list">
+                    <li><strong>The End-to-End Package</strong> - Total peace of mind. Full lifecycle from project ideation to presentation prep.</li>
+                    <li><strong>A-La-Carte Services</strong> - Pick exactly what you need. Focus exclusively on the code implementation OR the thesis write-up.</li>
+                    <li><strong>Mentorship & Advisory</strong> - Need expert guidance? Benefit from debugging, architecture review, and coaching.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Section (Now QR / Contact) -->
+        <div class="middle-section">
+            <div class="image-container">
+                <a href="pricing.html" style="display: contents;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fnanafork.github.io%2Fcortex-consult%2Fpricing.html" alt="QR Code" style="cursor: pointer;">
+                </a>
+                <div class="name-badge">Scan for Pricing</div>
+            </div>
+
+            <div class="contact-info">
+                <div class="info-row">
+                    <div class="icon-circle" style="color: #25D366; border-color: #25D366;">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <span class="label">WhatsApp</span>
+                        <span class="value">054 809 4935</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

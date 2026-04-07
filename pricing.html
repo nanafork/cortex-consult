@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Cortex Consult</title>
+    <style>
+        :root {
+            --primary: #0A192F;
+            --secondary: #64FFDA;
+            --light-text: #CCD6F6;
+            --bg-accent: #112240;
+            --text-muted: #8892B0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary);
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .header h1 { 
+            color: var(--secondary); 
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+        .pricing-grid {
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            flex: 1;
+            min-width: 280px;
+            background-color: var(--bg-accent);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(100,255,218,0.2);
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+        .pricing-card.popular {
+            border-color: var(--secondary);
+            position: relative;
+        }
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .pkg-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+        }
+        .price {
+            font-size: 48px;
+            color: var(--secondary);
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+        .price span {
+            font-size: 20px;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 40px 0;
+            flex-grow: 1;
+        }
+        .features li {
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .features li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Investment Packages</h1>
+        <p>Choose the level of guidance you need for your Machine Learning project.</p>
+    </div>
+    
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <div class="pkg-title">Mentorship & Advisory</div>
+            <div class="price"><span>₵</span>1,500</div>
+            <ul class="features">
+                <li>Expert guidance for your existing topic</li>
+                <li>Strategic architecture reviews</li>
+                <li>Code debugging sessions</li>
+                <li>Step-by-step technical coaching</li>
+            </ul>
+            <a href="https://wa.me/233548094935" class="btn">Select Package</a>
+        </div>
+        
+        <div class="pricing-card popular">
+            <div class="popular-tag">Most Recommended</div>
+            <div class="pkg-title">End-to-End Package</div>
+            <div class="price"><span>₵</span>5,000</div>
+            <ul class="features">
+                <li>Complete lifecycle handling</li>
+                <li>Project ideation & proposal</li>
+                <li>Full code implementation</li>
+                <li>Thesis write-up included</li>
+                <li>Presentation and Q&A prep</li>
+            </ul>
+            <a href="https://wa.me/233548094935" class="btn">Select Package</a>
+        </div>
+
+        <div class="pricing-card">
+            <div class="pkg-title">A-La-Carte Services</div>
+            <div class="price"><span>₵</span>2,500</div>
+            <ul class="features">
+                <li>Pick the specific help you need</li>
+                <li>Focus exclusively on Implementation OR</li>
+                <li>Focus exclusively on Thesis Write-up</li>
+                <li>Seamless integration with your work</li>
+            </ul>
+            <a href="https://wa.me/233548094935" class="btn">Select Package</a>
+        </div>
+    </div>
+</body>
+</html>
