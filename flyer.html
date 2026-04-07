@@ -35,8 +35,8 @@
         }
 
         .flyer-canvas {
-            width: 800px;
-            min-height: 1000px; /* Changed to min-height to prevent clipping */
+            width: 794px;
+            min-height: 1123px; /* Standard A4 aspect ratio in pixels */
             background: linear-gradient(180deg, rgba(8,8,8,0.9) 0%, rgba(0,0,0,1) 100%);
             position: relative;
             box-shadow: 0 0 40px rgba(0,0,0,1);
@@ -45,6 +45,27 @@
             padding: 60px;
             box-sizing: border-box;
             border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            body {
+                background: #000;
+                padding: 0;
+            }
+            .flyer-canvas {
+                width: 210mm;
+                height: 297mm;
+                min-height: 297mm;
+                box-shadow: none;
+                border: none;
+                margin: 0;
+                padding: 40px;
+            }
+            #downloadBtn { display: none !important; }
         }
 
         /* Top Header */
@@ -388,5 +409,29 @@
         </div>
 
     </div>
+    <!-- Download Feature -->
+    <button id="downloadBtn" data-html2canvas-ignore="true" style="position: fixed; bottom: 20px; right: 20px; background: #f5a623; color: #000; font-weight: bold; padding: 15px 25px; border: none; border-radius: 30px; cursor: pointer; font-size: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 9999; font-family: sans-serif;">
+        📸 Click to Save as PNG
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const btn = this;
+            btn.innerText = 'Generating...';
+            html2canvas(document.getElementById('flyer'), {
+                backgroundColor: '#050505',
+                scale: 2, // High resolution
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                let link = document.createElement('a');
+                link.download = 'Cortex_Consult_Flyer.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                btn.innerText = '📸 Click to Save as PNG';
+            });
+        });
+    </script>
 </body>
 </html>
